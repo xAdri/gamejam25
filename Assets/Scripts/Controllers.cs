@@ -14,6 +14,8 @@ public class Controllers : MonoBehaviour
     [Header("Canon")]
     public GameObject canon;
     public GameObject canonTargetToAim;
+    public GameObject canonBulletPrefab;
+    public Transform canonBulletSpawnPos;
 
     // Update is called once per frame
     void Update()
@@ -50,6 +52,7 @@ public class Controllers : MonoBehaviour
 
     private void AimCanonSystem()
     {
+        canonBulletSpawnPos.transform.LookAt(canonTargetToAim.transform);
         Vector3 moveDirectionCanon = Vector3.zero;
 
         // Cam
@@ -69,11 +72,16 @@ public class Controllers : MonoBehaviour
         {
             moveDirectionCanon -= Vector3.right;
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            print("canon dispara");
+            Shoot();
         }
 
         canonTargetToAim.transform.Translate(moveDirectionCanon * aimSpeed * Time.deltaTime);
+    }
+
+    void Shoot()
+    {
+        Instantiate(canonBulletPrefab, canonBulletSpawnPos);
     }
 }
