@@ -21,7 +21,7 @@ public class CamRecorder : MonoBehaviour
         delfinRenderer = delfin.GetComponent<Renderer>();
         medusaRenderer = medusa.GetComponent<Renderer>();
 
-        InvokeRepeating("ShowAnimal", 5f, 5f);
+        InvokeRepeating("ShowAnimal", 3f, 3f);
     }
 
     public void ShowAnimal()
