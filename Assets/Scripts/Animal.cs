@@ -8,9 +8,14 @@ public class Animal : MonoBehaviour
     [SerializeField] private List<Vector3> targetPositions;
     [SerializeField] private Vector3 currentPos;
     [SerializeField] private Vector3 nextPos;
+    [SerializeField] private GameObject targetToSearch;
+    PositionGenerator posGen;
+    float moveSpeed = 5f;
+    float rotationSpeed = 10f;
 
     void Start()
     {
+        posGen = new PositionGenerator();
         GenerateRandomPositions();
     }
 
@@ -29,15 +34,20 @@ public class Animal : MonoBehaviour
         }
 
         nextPos = targetPositions[0];
+        InstantiateParticles();
     }
 
     private void MoveToNextPosition()
     {
-        // Hacer que se mueva con una variable de velocidad definida como speed hasta llegar al otro punto
-        if (Vector3.Distance(gameObject.transform.position, currentPos) <= 0.1f)
+        Vector3 direction = (nextPos - transform.position).normalized;
+        transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        if (Vector3.Distance(gameObject.transform.position, nextPos) <= 0.5f)
         {
-            InstantiateParticles();
             NextPosition();
+            InstantiateParticles();
         }
     }
 
@@ -45,10 +55,11 @@ public class Animal : MonoBehaviour
     {
         nextPos = targetPositions[0];
         targetPositions.RemoveAt(0);
+        Destroy(targetToSearch, 0);
     }
 
     private void InstantiateParticles()
     {
-        Instantiate(targetPrefab, nextPos, Quaternion.identity);
+        targetToSearch = Instantiate(targetPrefab, nextPos, Quaternion.identity);
     }
 }

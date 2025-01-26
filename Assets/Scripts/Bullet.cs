@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+        transform.parent = null;
         Destroy(gameObject, 2);
     }
 
