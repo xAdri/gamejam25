@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         Destroy(gameObject, 2);
-        gameObject.transform.parent = null;
     }
 
     // Update is called once per frame
