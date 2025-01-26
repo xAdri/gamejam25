@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 161d52669eb683f4d94ec999c41be172
+guid: ac3680818fa96744381e709849078de5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: uv_checker_material_uv_grid_1024x1024
-    second: {fileID: 2100000, guid: 8a4ca7a32b1a7db46b5952624bd232d1, type: 2}
+      name: Camara
+    second: {fileID: 2100000, guid: a5fd1b8f5278c4c4f949cd4e12d18cd0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
