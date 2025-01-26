@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2709003eece81e94690863ded51407d2
   - enabled: 1
+    path: Assets/Scenes/Entrega.unity
+    guid: 83208af4ecabfac4f83a4d997409dcc1
+  - enabled: 1
     path: Assets/Scenes/Artistas.unity
     guid: d21559722d04e3e4396fe5017e98d83b
   - enabled: 1
